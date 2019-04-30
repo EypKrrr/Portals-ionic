@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>You Have</ion-title>
+    <div class="item-note" slot="end">
+        <ion-button [routerDirection]="'root'" [routerLink]="['/search']">
+            <ion-icon slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+      </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let item of added">
+          <ion-label color="danger" *ngIf="selected === item.name">{{item.name}}</ion-label>
+          <ion-label *ngIf="selected !== item.name">{{item.name}}</ion-label>
+        </ion-item>
+      </ion-list>
+</ion-content>

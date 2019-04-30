@@ -1,0 +1,28 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{selected}}</ion-title>
+          <div class="item-note" slot="end">
+            <ion-button [routerDirection]="'root'" [routerLink]="['/search']">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of menues">
+            <ion-item [routerDirection]="'root'" [routerLink]="['/']">
+              <ion-label>
+                {{p.name}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

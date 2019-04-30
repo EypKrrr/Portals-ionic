@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>My Portal</ion-title>
+      <ion-menu-button></ion-menu-button>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content >
+
+                <ion-label color="tertiary" >Portal Ekle</ion-label>
+
+          <ion-item>           
+            <ionic-selectable  
+              [isMultiple]="true"
+              [(ngModel)]="AddedPortals"
+              [items]="portals"
+              itemValueField="id"
+              itemTextField="name"
+              [canSearch]="true"
+              (onChange)="port1Change($event)"
+              placeholder = "Enter Portal">
+            </ionic-selectable>
+        
+          </ion-item>   
+            <br>
+            <br>
+
+            <ion-segment [(value)]="SelectedPortal">
+                <ion-segment-button *ngFor="let item of AddedPortals" [(value)]="item.name" (ionSelect)="changePortal(item.name)">
+                  <ion-label>{{item.name}}</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+
+            <ion-item *ngFor="let item of AddedPortals">
+              <ion-label class="addFrame" *ngIf="item.name === SelectedPortal">
+                {{item.name}}
+              </ion-label>
+              <ion-label *ngIf="item.name !== SelectedPortal" (click)=changePortal(item.name)>
+                {{item.name}}
+              </ion-label>
+            </ion-item>
+    
+          
+  </ion-content>
+  
